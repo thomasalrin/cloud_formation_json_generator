@@ -25,8 +25,12 @@
       <br>
       <label for="ec2_type">Type:</label>
       <input type="text" class="form-control" id="ec2_type" name="ec2_type" placeholder="Enter EC2 Instance type">
- 
- 
+      <br>
+      <label for="security_group">Security Group:</label>
+      <input type="text" class="form-control" id="security_group" name="security_group" placeholder="Existing security group name">
+      <br>
+      <label for="key_pair">KeyPair Name:</label>
+      <input type="text" class="form-control" id="key_pair" name="key_pair" placeholder="Existing SSH KeyPair name">
     </div>
     <button type="submit" class="btn btn-success">Generate Json</button>
   </form>

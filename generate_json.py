@@ -8,6 +8,8 @@ parser = optparse.OptionParser()
 parser.add_option('--vpc', dest='vpc', help="VPC ID", default="VPC_ID")
 parser.add_option('--ami', dest='ami', help="AMI ID", default="ami-79873901")
 parser.add_option('--type', dest='type', help="Instance type", default="t2.micro")
+parser.add_option('--group', dest='group', help="security group", default="default")
+parser.add_option('--keypair', dest='keypair', help="Keypair name")
 
 options, args = parser.parse_args()
 
@@ -15,7 +17,8 @@ options, args = parser.parse_args()
 vpc=options.vpc
 ec2_ami=options.ami
 ec2_type=options.type
-
+security_group=options.group
+keypair=options.keypair
 
 from troposphere import Base64, FindInMap, GetAtt
 from troposphere import Parameter, Output, Ref, Template

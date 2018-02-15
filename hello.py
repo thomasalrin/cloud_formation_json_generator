@@ -14,6 +14,8 @@ class ReusableForm(Form):
     vpc = TextField('Vpc:', validators=[validators.required()])
     ec2_ami = TextField('Ec2Ami:', validators=[validators.required(), validators.Length(min=8, max=15)])
     ec2_type = TextField('Ec2Type:', validators=[validators.required(), validators.Length(min=5, max=15)])
+    security_group = TextField('SecurityGroup:', validators=[validators.required(), validators.Length(min=5, max=15)])
+    key_pair = TextField('KeyPair:', validators=[validators.required(), validators.Length(min=5, max=15)])
  
  
 @app.route("/", methods=['GET', 'POST'])
@@ -25,11 +27,13 @@ def hello():
         vpc=request.form['vpc']
         ec2_ami=request.form['ec2_ami']
         ec2_type=request.form['ec2_type']
+	security_group=request.form['security_group']
+	key_pair=request.form['key_pair']
         print vpc, " ", ec2_ami, " ", ec2_type
  
         if form.validate():
             # Save the comment here.
-	    command='python generate_json.py --vpc='+str(vpc)+' --ami='+str(ec2_ami)+' --type='+str(ec2_type)
+	    command='python generate_json.py --vpc='+str(vpc)+' --ami='+str(ec2_ami)+' --type='+str(ec2_type)+' --group='+str(secrity_group)+' --keypair='+str(key_pair)
 	    print command
             #flash(os.system(command))
 
